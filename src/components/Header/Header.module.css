@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  padding-right: 2rem;
+  background-color: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-grey);
+}
+
+.status {
+  display: flex;
+}
+
+.statusList {
+  font-size: 1.3rem;
+  margin: 0.3rem;
+  background-color: transparent;
+  opacity: 0.75;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.statusList:hover,
+.statusList.selected {
+  opacity: 1;
+}
+
+.statusList.selected::after {
+  content: "";
+  display: block;
+  margin-top: 0.2rem;
+  border: 1px solid var(--color-opacity);
+}
+
+.headerText {
+  font-weight: 600;
+}
