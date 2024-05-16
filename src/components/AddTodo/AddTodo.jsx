@@ -16,7 +16,7 @@ export default function AddTodo({ onAdd }) {
     setTitle("");
     setContent("");
   };
-  2;
+
   return (
     <form className={styles.todoForm} onSubmit={handleSubmit}>
       <input
