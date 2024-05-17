@@ -9,6 +9,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --color-bg-dark: #f5f5f5;
+  --color-main-bg: #bdc4e1;
   --color-bg: #fdfffd;
   --color-grey: #d1d1d1;
   --color-text: #22243b;
@@ -26,7 +27,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(189, 196, 225);
+  background: var(--color-main-bg);
   font-size: 1.1rem;
   margin: 0;
 }
@@ -43,6 +44,9 @@ body {
   background-color: var(--color-bg-dark);
   overflow: hidden;
   border-radius: 1rem;
+  box-shadow: 9px 9px 9px 0px rgba(140, 140, 140, 0.66);
+  -webkit-box-shadow: 9px 9px 9px 0px rgba(140, 140, 140, 0.66);
+  -moz-box-shadow: 9px 9px 9px 0px rgba(140, 140, 140, 0.66);
 }
 
 ul {

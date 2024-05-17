@@ -1,20 +1,25 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styles from "./AddTodo.module.css";
 
 export default function AddTodo({ onAdd }) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const titleRef = useRef(null);
+  const contentRef = useRef(null);
 
-  const handleTitleChange = (e) => setTitle(e.target.value);
-  const handleContentChange = (e) => setContent(e.target.value);
+  useEffect(() => {
+    titleRef.current.focus();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title.trim().length === 0 || content.trim().length === 0) return;
+    const title = titleRef.current.value.trim();
+    const content = contentRef.current.value.trim();
+    if (title.length === 0 || content.length === 0) return;
 
     onAdd({ id: uuidv4(), title, content, isDone: "working" });
-    setTitle("");
-    setContent("");
+    titleRef.current.value = "";
+    contentRef.current.value = "";
+    titleRef.current.focus();
   };
 
   return (
@@ -23,15 +28,13 @@ export default function AddTodo({ onAdd }) {
         className={styles.titleInput}
         type="text"
         placeholder="제목"
-        onChange={handleTitleChange}
-        value={title}
+        ref={titleRef}
       ></input>
       <input
         className={styles.contentInput}
         type="text"
         placeholder="내용을 입력하세요"
-        onChange={handleContentChange}
-        value={content}
+        ref={contentRef}
       ></input>
       <button className={styles.submitBtn} type="submit">
         제출
